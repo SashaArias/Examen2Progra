@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Página Principal";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido al Sistema de Gestión de Metas</h1>
+    <p>Utilice los enlaces a continuación para navegar.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Metas</h5>
+                    <p class="card-text">Administre sus metas personales.</p>
+                    <a asp-controller="Metas" asp-action="Index" class="btn btn-primary">Ir a Metas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tareas</h5>
+                    <p class="card-text">Administre las tareas asociadas a sus metas.</p>
+                    <a asp-controller="Tareas" asp-action="Index" class="btn btn-primary">Ir a Tareas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
