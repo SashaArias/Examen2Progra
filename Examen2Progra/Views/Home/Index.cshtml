@@ -1,29 +1,86 @@
 ﻿@{
-    ViewData["Title"] = "Página Principal";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenido al Sistema de Gestión de Metas</h1>
-    <p>Utilice los enlaces a continuación para navegar.</p>
+<!-- Sección "Hero" con un degradado de fondo -->
+<div class="hero d-flex align-items-center text-white"
+     style="background: linear-gradient(135deg, #364fc7 0%, #42d686 100%);
+            min-height: 70vh;">
+    <div class="container text-center">
+        <h1 class="display-3 fw-bold">Sistema de Gestión de Metas</h1>
+        <p class="lead mb-4">
+            Organiza, prioriza y monitorea tus metas y tareas de forma efectiva.
+        </p>
+        <div>
+            <a asp-controller="Metas" asp-action="Index" class="btn btn-light btn-lg me-2">
+                <i class="bi bi-flag-fill me-1"></i> Ir a Metas
+            </a>
+            <a asp-controller="Tareas" asp-action="Index" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-list-check me-1"></i> Ir a Tareas
+            </a>
+        </div>
+    </div>
+</div>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Metas</h5>
-                    <p class="card-text">Administre sus metas personales.</p>
-                    <a asp-controller="Metas" asp-action="Index" class="btn btn-primary">Ir a Metas</a>
+<!-- Sección de Funcionalidades Destacadas -->
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">¿Qué puedes hacer con este sistema?</h2>
+        <p class="text-muted">
+            Descubre todas las ventajas de administrar tus proyectos y objetivos con nuestra herramienta.
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Tarjeta de Metas -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <!-- Ícono (Bootstrap Icons) -->
+                    <i class="bi bi-star-fill fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title mb-3">Define tus Metas</h5>
+                    <p class="card-text text-muted">
+                        Crea metas personales, establece prioridades y controla su estado para un mejor seguimiento.
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Tareas</h5>
-                    <p class="card-text">Administre las tareas asociadas a sus metas.</p>
-                    <a asp-controller="Tareas" asp-action="Index" class="btn btn-primary">Ir a Tareas</a>
+
+        <!-- Tarjeta de Tareas -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-check-circle-fill fs-1 text-success mb-3"></i>
+                    <h5 class="card-title mb-3">Gestiona Tus Tareas</h5>
+                    <p class="card-text text-muted">
+                        Descompone tus metas en tareas concretas y mantén un control preciso del progreso.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Organización -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-bar-chart-line-fill fs-1 text-info mb-3"></i>
+                    <h5 class="card-title mb-3">Visualiza Tu Progreso</h5>
+                    <p class="card-text text-muted">
+                        Observa de un vistazo tu avance y mantén la motivación para completar tus objetivos.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Sección de Llamado a la Acción Final -->
+<div class="text-center py-5 bg-light">
+    <h2 class="fw-bold mb-3">¡Comienza Ahora!</h2>
+    <p class="text-muted mb-4">
+        Da el primer paso hacia una mejor organización de tus metas y tareas.
+    </p>
+    <a asp-controller="Metas" asp-action="Create" class="btn btn-primary btn-lg">
+        <i class="bi bi-plus-lg me-1"></i> Crear Primera Meta
+    </a>
 </div>

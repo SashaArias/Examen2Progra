@@ -1,23 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Threading;
 
 namespace Examen2Progra.Models
 {
-    public enum MetaCategoria
+    public enum Categoria
     {
-        DesarrolloPersonal, Carrera, Salud, Finanzas, Relaciones, Otros
+        [Display(Name = "Desarrollo Personal")]
+        DesarrolloPersonal,
+        [Display(Name = "Carrera")]
+        Carrera,
+        [Display(Name = "Salud")]
+        Salud,
+        [Display(Name = "Finanzas")]
+        Finanzas,
+        [Display(Name = "Relaciones")]
+        Relaciones,
+        [Display(Name = "Otros")]
+        Otros
     }
 
-    public enum MetaPrioridad
+    public enum Prioridad
     {
-        Alta, Media, Baja
+        [Display(Name = "Alta")]
+        Alta,
+        [Display(Name = "Media")]
+        Media,
+        [Display(Name = "Baja")]
+        Baja
     }
 
-    public enum MetaEstado
+    public enum EstadoMeta
     {
-        NoIniciada, EnProgreso, Completada, Abandonada
+        [Display(Name = "No Iniciada")]
+        NoIniciada,
+        [Display(Name = "En Progreso")]
+        EnProgreso,
+        [Display(Name = "Completada")]
+        Completada,
+        [Display(Name = "Abandonada")]
+        Abandonada
     }
 
     public class Meta
@@ -28,24 +50,22 @@ namespace Examen2Progra.Models
         [StringLength(100, MinimumLength = 5, ErrorMessage = "El título debe tener entre 5 y 100 caracteres.")]
         public required string Titulo { get; set; }
 
-        [Display(Name = "Descripción")]
-        public required string Descripcion { get; set; }
+        public string? Descripcion { get; set; }
 
-        [Display(Name = "Categoría")]
-        public MetaCategoria Categoria { get; set; }
+        [Required(ErrorMessage = "La categoría es obligatoria.")]
+        public Categoria Categoria { get; set; }
 
-        [Display(Name = "Fecha de Creación")]
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-        [Display(Name = "Fecha Límite")]
         public DateTime? FechaLimite { get; set; }
 
-        [Display(Name = "Prioridad")]
-        public MetaPrioridad Prioridad { get; set; }
+        [Required(ErrorMessage = "La prioridad es obligatoria.")]
+        public Prioridad Prioridad { get; set; }
 
-        [Display(Name = "Estado")]
-        public MetaEstado Estado { get; set; }
+        [Required(ErrorMessage = "El estado es obligatorio.")]
+        public EstadoMeta Estado { get; set; }
 
-        public List<Tarea> Tareas { get; set; } = new List<Tarea>(); // Relación con Tareas
+        // Relación: Una Meta puede tener múltiples Tareas asociadas.
+        public ICollection<Tarea> Tareas { get; set; } = new List<Tarea>();
     }
 }

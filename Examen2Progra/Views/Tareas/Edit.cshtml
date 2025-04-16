@@ -1,64 +1,70 @@
 ﻿@model Examen2Progra.Models.Tarea
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Tarea";
 }
 
-<h1>Edit</h1>
-
-<h4>Tarea</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-warning text-white">
+        <h4 class="mb-0">Editar Tarea</h4>
+    </div>
+    <div class="card-body">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Descripcion" class="form-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FechaCreacion" class="control-label"></label>
-                <input asp-for="FechaCreacion" class="form-control" />
+            <div class="mb-3">
+                <label asp-for="FechaCreacion" class="form-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" readonly />
                 <span asp-validation-for="FechaCreacion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FechaLimite" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="FechaLimite" class="form-label"></label>
                 <input asp-for="FechaLimite" class="form-control" />
                 <span asp-validation-for="FechaLimite" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <select asp-for="Estado" class="form-control"></select>
+            <div class="mb-3">
+                <label asp-for="Estado" class="form-label"></label>
+                <select asp-for="Estado" class="form-select"
+                        asp-items="Html.GetEnumSelectList<Examen2Progra.Models.EstadoTarea>()"></select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Dificultad" class="control-label"></label>
-                <select asp-for="Dificultad" class="form-control"></select>
+            <div class="mb-3">
+                <label asp-for="Dificultad" class="form-label"></label>
+                <select asp-for="Dificultad" class="form-select"
+                        asp-items="Html.GetEnumSelectList<Examen2Progra.Models.Dificultad>()"></select>
                 <span asp-validation-for="Dificultad" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TiempoEstimado" class="control-label"></label>
-                <input asp-for="TiempoEstimado" class="form-control" />
+            <div class="mb-3">
+                <label asp-for="TiempoEstimado" class="form-label"></label>
+                <input asp-for="TiempoEstimado" class="form-control" type="number" min="1" />
                 <span asp-validation-for="TiempoEstimado" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MetaId" class="control-label"></label>
-                <select asp-for="MetaId" class="form-control" asp-items="ViewBag.MetaId"></select>
+            <div class="mb-3">
+                <label asp-for="MetaId" class="form-label"></label>
+                <select asp-for="MetaId" class="form-select" asp-items="ViewBag.MetaId"></select>
                 <span asp-validation-for="MetaId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="mb-3 text-end">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-pencil-fill"></i> Actualizar Tarea
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+

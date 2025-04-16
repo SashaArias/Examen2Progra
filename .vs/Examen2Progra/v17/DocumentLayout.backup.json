@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|c:\\users\\rip\\documents\\github\\examen2progra\\examen2progra\\views\\charts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|solutionrelative:examen2progra\\views\\charts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|c:\\users\\rip\\documents\\github\\examen2progra\\examen2progra\\controllers\\chartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|solutionrelative:examen2progra\\controllers\\chartscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|c:\\users\\rip\\documents\\github\\examen2progra\\examen2progra\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|solutionrelative:examen2progra\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|c:\\users\\rip\\documents\\github\\examen2progra\\examen2progra\\views\\metas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|solutionrelative:examen2progra\\views\\metas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|c:\\users\\rip\\documents\\github\\examen2progra\\examen2progra\\views\\metas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D0E2914B-8536-4EC1-BDB9-E6E87B8696FD}|Examen2Progra\\Examen2Progra.csproj|solutionrelative:examen2progra\\views\\metas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Charts\\Index.cshtml",
+              "RelativeDocumentMoniker": "Examen2Progra\\Views\\Charts\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Charts\\Index.cshtml",
+              "RelativeToolTip": "Examen2Progra\\Views\\Charts\\Index.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T07:37:09.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Examen2Progra\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Examen2Progra\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAgwFUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T07:19:07.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChartsController.cs",
+              "DocumentMoniker": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Controllers\\ChartsController.cs",
+              "RelativeDocumentMoniker": "Examen2Progra\\Controllers\\ChartsController.cs",
+              "ToolTip": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Controllers\\ChartsController.cs",
+              "RelativeToolTip": "Examen2Progra\\Controllers\\ChartsController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T07:18:09.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Metas\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Examen2Progra\\Views\\Metas\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Metas\\Edit.cshtml",
+              "RelativeToolTip": "Examen2Progra\\Views\\Metas\\Edit.cshtml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAYwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T07:03:54.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Metas\\Index.cshtml",
+              "RelativeDocumentMoniker": "Examen2Progra\\Views\\Metas\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Rip\\Documents\\Github\\Examen2Progra\\Examen2Progra\\Views\\Metas\\Index.cshtml",
+              "RelativeToolTip": "Examen2Progra\\Views\\Metas\\Index.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T07:03:21.325Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Gráfico de Metas por Estado";
+
+    // Recuperar los datos desde ViewBag
+    var jsonLabels = ViewBag.Labels as string;
+    var jsonData = ViewBag.Data as string;
+}
+
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Metas por Estado</h2>
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+@section Scripts {
+    <!-- Si no está en Layout, agrega la referencia al CDN de Chart.js -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+
+    <script>
+        // Convertir las cadenas JSON en arrays de JS
+        var labels = @Html.Raw(jsonLabels);
+        var data = @Html.Raw(jsonData);
+
+        // Inicializar el gráfico
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,  // Por ejemplo: ["NoIniciada","EnProgreso","Completada","Abandonada"]
+                datasets: [{
+                    label: 'Cantidad de Metas',
+                    data: data,    // [5, 3, 8, 2], etc.
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}

@@ -18,26 +18,32 @@ namespace Examen2Progra.Controllers
             _context = context;
         }
 
+        // Método privado para cargar listas de enums en ViewData (opcional)
+        private void PopulateEnumLists()
+        {
+            ViewData["CategoriaList"] = new SelectList(Enum.GetValues(typeof(Categoria)));
+            ViewData["PrioridadList"] = new SelectList(Enum.GetValues(typeof(Prioridad)));
+            ViewData["EstadoMetaList"] = new SelectList(Enum.GetValues(typeof(EstadoMeta)));
+        }
+
         // GET: Metas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Metas.ToListAsync());
+            // Se incluye la relación para poder acceder a las tareas asociadas si es necesario.
+            return View(await _context.Metas.Include(m => m.Tareas).ToListAsync());
         }
 
         // GET: Metas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var meta = await _context.Metas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            // Incluye las tareas asociadas para mostrarlas en la vista de detalles.
+            var meta = await _context.Metas.Include(m => m.Tareas)
+                                           .FirstOrDefaultAsync(m => m.Id == id);
             if (meta == null)
-            {
                 return NotFound();
-            }
 
             return View(meta);
         }
@@ -45,12 +51,11 @@ namespace Examen2Progra.Controllers
         // GET: Metas/Create
         public IActionResult Create()
         {
+            PopulateEnumLists();
             return View();
         }
 
         // POST: Metas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Titulo,Descripcion,Categoria,FechaCreacion,FechaLimite,Prioridad,Estado")] Meta meta)
@@ -61,6 +66,7 @@ namespace Examen2Progra.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateEnumLists();
             return View(meta);
         }
 
@@ -68,29 +74,23 @@ namespace Examen2Progra.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var meta = await _context.Metas.FindAsync(id);
             if (meta == null)
-            {
                 return NotFound();
-            }
+
+            PopulateEnumLists();
             return View(meta);
         }
 
         // POST: Metas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descripcion,Categoria,FechaCreacion,FechaLimite,Prioridad,Estado")] Meta meta)
         {
             if (id != meta.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -102,16 +102,13 @@ namespace Examen2Progra.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!MetaExists(meta.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
+            PopulateEnumLists();
             return View(meta);
         }
 
@@ -119,21 +116,17 @@ namespace Examen2Progra.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var meta = await _context.Metas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var meta = await _context.Metas.FirstOrDefaultAsync(m => m.Id == id);
             if (meta == null)
-            {
                 return NotFound();
-            }
 
             return View(meta);
         }
 
-        // POST: Metas/Delete/5
+        // POST: Metas/Delete/5  
+        // Solo elimina si la meta está en estado "Completada"
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -141,10 +134,14 @@ namespace Examen2Progra.Controllers
             var meta = await _context.Metas.FindAsync(id);
             if (meta != null)
             {
+                if (meta.Estado != EstadoMeta.Completada)
+                {
+                    ModelState.AddModelError("", "Solo se pueden eliminar metas que estén completadas.");
+                    return View("Delete", meta);
+                }
                 _context.Metas.Remove(meta);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

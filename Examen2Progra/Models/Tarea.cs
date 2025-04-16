@@ -1,18 +1,26 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Examen2Progra.Models;
 
 namespace Examen2Progra.Models
 {
-    public enum TareaEstado
+    public enum EstadoTarea
     {
-        Pendiente, EnProgreso, Completada
+        [Display(Name = "Pendiente")]
+        Pendiente,
+        [Display(Name = "En Progreso")]
+        EnProgreso,
+        [Display(Name = "Completada")]
+        Completada
     }
 
-    public enum TareaDificultad
+    public enum Dificultad
     {
-        Facil, Media, Dificil
+        [Display(Name = "Fácil")]
+        Facil,
+        [Display(Name = "Media")]
+        Media,
+        [Display(Name = "Difícil")]
+        Dificil
     }
 
     public class Tarea
@@ -23,23 +31,26 @@ namespace Examen2Progra.Models
         [StringLength(200, MinimumLength = 5, ErrorMessage = "La descripción debe tener entre 5 y 200 caracteres.")]
         public required string Descripcion { get; set; }
 
-        [Display(Name = "Fecha de Creación")]
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-        [Display(Name = "Fecha Límite")]
         public DateTime? FechaLimite { get; set; }
 
-        [Display(Name = "Estado")]
-        public TareaEstado Estado { get; set; }
+        [Required(ErrorMessage = "El estado es obligatorio.")]
+        public EstadoTarea Estado { get; set; }
 
-        [Display(Name = "Dificultad")]
-        public TareaDificultad Dificultad { get; set; }
+        [Required(ErrorMessage = "La dificultad es obligatoria.")]
+        public Dificultad Dificultad { get; set; }
 
-        [Display(Name = "Tiempo Estimado (horas)")]
+        [Required(ErrorMessage = "El tiempo estimado es obligatorio.")]
+        [Range(1, int.MaxValue, ErrorMessage = "El tiempo estimado debe ser un valor mayor a 0.")]
         public int TiempoEstimado { get; set; }
 
-        public int MetaId { get; set; }  // Clave foránea
-        [ForeignKey("MetaId")]
-        public required Meta Meta { get; set; }    // Navegación a Meta
+        [Display(Name = "Meta Asociada")]
+        [Required(ErrorMessage = "Debe especificar la meta asociada.")]
+        public int MetaId { get; set; }
+
+        // Propiedad de navegación
+        public required Meta Meta { get; set; }
     }
 }
+

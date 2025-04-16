@@ -29,17 +29,13 @@ namespace Examen2Progra.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var tarea = await _context.Tareas
                 .Include(t => t.Meta)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tarea == null)
-            {
                 return NotFound();
-            }
 
             return View(tarea);
         }
@@ -47,13 +43,11 @@ namespace Examen2Progra.Controllers
         // GET: Tareas/Create
         public IActionResult Create()
         {
-            ViewData["MetaId"] = new SelectList(_context.Metas, "Id", "Titulo");
+            ViewBag.MetaId = new SelectList(_context.Metas, "Id", "Titulo");
             return View();
         }
 
         // POST: Tareas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Descripcion,FechaCreacion,FechaLimite,Estado,Dificultad,TiempoEstimado,MetaId")] Tarea tarea)
@@ -64,7 +58,7 @@ namespace Examen2Progra.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MetaId"] = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
+            ViewBag.MetaId = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
             return View(tarea);
         }
 
@@ -72,30 +66,23 @@ namespace Examen2Progra.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var tarea = await _context.Tareas.FindAsync(id);
             if (tarea == null)
-            {
                 return NotFound();
-            }
-            ViewData["MetaId"] = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
+
+            ViewBag.MetaId = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
             return View(tarea);
         }
 
         // POST: Tareas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Descripcion,FechaCreacion,FechaLimite,Estado,Dificultad,TiempoEstimado,MetaId")] Tarea tarea)
         {
             if (id != tarea.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -107,17 +94,13 @@ namespace Examen2Progra.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!TareaExists(tarea.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MetaId"] = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
+            ViewBag.MetaId = new SelectList(_context.Metas, "Id", "Titulo", tarea.MetaId);
             return View(tarea);
         }
 
@@ -125,17 +108,13 @@ namespace Examen2Progra.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var tarea = await _context.Tareas
                 .Include(t => t.Meta)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tarea == null)
-            {
                 return NotFound();
-            }
 
             return View(tarea);
         }
@@ -149,8 +128,20 @@ namespace Examen2Progra.Controllers
             if (tarea != null)
             {
                 _context.Tareas.Remove(tarea);
+                await _context.SaveChangesAsync();
             }
+            return RedirectToAction(nameof(Index));
+        }
 
+        // Acción para marcar una tarea como completada.
+        public async Task<IActionResult> MarcarCompletada(int id)
+        {
+            var tarea = await _context.Tareas.FindAsync(id);
+            if (tarea == null)
+                return NotFound();
+
+            tarea.Estado = EstadoTarea.Completada;
+            _context.Update(tarea);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -161,3 +152,4 @@ namespace Examen2Progra.Controllers
         }
     }
 }
+

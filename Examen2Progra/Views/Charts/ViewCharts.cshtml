@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Gráficos";
+
+    // Ejemplo: datos estáticos. En un escenario real, los podrías obtener dinámicamente.
+    var labels = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo" };
+    var data = new[] { 10, 20, 15, 30, 25 };
+
+    // Convertir los arreglos a formato JSON
+    var jsonLabels = Newtonsoft.Json.JsonConvert.SerializeObject(labels);
+    var jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+}
+
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Gráfico de Ejemplo</h2>
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+@section Scripts {
+    <!-- Cargar Chart.js desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Convertir los datos inyectados por Razor a variables JS
+        var labels = @Html.Raw(jsonLabels);
+        var data = @Html.Raw(jsonData);
+
+        // Obtener el contexto del canvas
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Crear el gráfico
+        var myChart = new Chart(ctx, {
+            type: 'bar', // 'bar', 'line', 'pie', etc.
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Ventas en 2024',
+                    data: data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
+
